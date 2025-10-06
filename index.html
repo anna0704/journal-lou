@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <title>Mein Flipbook</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 50px;
+      background-color: #f9f9f9;
+    }
+    img {
+      max-width: 80%;
+      height: auto;
+      border: 1px solid #ccc;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    button {
+      margin: 20px 10px;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>Mein Flipbook</h1>
+  <img id="flipbook-image" src="bilder/bild1.png" alt="Flipbook Bild" />
+  <br />
+  <button onclick="prev()">◀ Vorheriges</button>
+  <button onclick="next()">Nächstes ▶</button>
+
+  <script>
+    const bilder = [
+      "bilder/bild1.png",
+      "bilder/bild2.png",
+      "bilder/bild3.png",
+      "bilder/bild4.png",
+      "bilder/bild5.png",
+      "bilder/bild6.png",
+      "bilder/bild7.png"
+    ];
+    let index = 0;
+    const imgElement = document.getElementById("flipbook-image");
+
+    function showImage(i) {
+      if (i < 0) i = bilder.length - 1;
+      if (i >= bilder.length) i = 0;
+      index = i;
+      imgElement.src = bilder[index];
+    }
+
+    function prev() {
+      showImage(index - 1);
+    }
+
+    function next() {
+      showImage(index + 1);
+    }
+  </script>
+</body>
+</html>
